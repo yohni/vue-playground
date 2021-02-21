@@ -1,63 +1,87 @@
 <template>
-  <div class="container">
-    <div>
-      <Logo />
-      <h1 class="title">vmcafe-frontend</h1>
-      <div class="links">
-        <a
-          href="https://nuxtjs.org/"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="button--green"
-        >
-          Documentation
-        </a>
-        <a
-          href="https://github.com/nuxt/nuxt.js"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="button--grey"
-        >
-          GitHub
-        </a>
-      </div>
-    </div>
+  <div class="home">
+    <b-carousel
+      id="carousel-banner"
+      v-model="slide"
+      :interval="5000"
+      controls
+      indicators
+      background="#ababab"
+      img-width="1024"
+      img-height="480"
+      style="text-shadow: 1px 1px 2px #333"
+      @sliding-start="onSlideStart"
+      @sliding-end="onSlideEnd"
+    >
+      <b-carousel-slide v-for="item in [1, 2, 3, 4]" :key="item">
+        <template #img>
+          <img
+            class="d-block img-fluid w-100"
+            width="1024"
+            height="480"
+            :src="require(`~/assets/banner${item}.jpg`)"
+            alt="image slot"
+          />
+        </template>
+      </b-carousel-slide>
+    </b-carousel>
+    <TabFilter
+      class="my-4"
+      :options="filters"
+      :selectedOption="selectedFilter"
+      @click="setFilter"
+    />
   </div>
 </template>
 
 <script>
-export default {}
+import TabFilter from '@/components/TabFilter'
+export default {
+  layout: 'Main',
+  components: {
+    TabFilter,
+  },
+  data() {
+    return {
+      sliding: null,
+      slide: 0,
+      filters: [
+        {
+          id: 0,
+          label: 'all',
+          value: 0,
+        },
+        {
+          id: 1,
+          label: 'Salt',
+          value: 1,
+        },
+        {
+          id: 2,
+          label: 'Sweet',
+          value: 2,
+        },
+        {
+          id: 3,
+          label: 'Bundle',
+          value: 3,
+        },
+      ],
+      selectedFilter: 0,
+    }
+  },
+  methods: {
+    onSlideStart(slide) {
+      this.sliding = true
+    },
+    onSlideEnd(slide) {
+      this.sliding = false
+    },
+    setFilter($event) {
+      this.selectedFilter = $event
+    },
+  },
+}
 </script>
 
-<style>
-.container {
-  margin: 0 auto;
-  min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-}
-
-.title {
-  font-family: 'Quicksand', 'Source Sans Pro', -apple-system, BlinkMacSystemFont,
-    'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-  display: block;
-  font-weight: 300;
-  font-size: 100px;
-  color: #35495e;
-  letter-spacing: 1px;
-}
-
-.subtitle {
-  font-weight: 300;
-  font-size: 42px;
-  color: #526488;
-  word-spacing: 5px;
-  padding-bottom: 15px;
-}
-
-.links {
-  padding-top: 15px;
-}
-</style>
+<style></style>
