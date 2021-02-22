@@ -1,4 +1,41 @@
+var fs = require('fs')
+var path = require('path')
+
+let ENV_DEV = false
+
+//Development Environment
+let port = 8080
+let host = 'localhost'
+let https = false
+
+//Production Environment
+if (ENV_DEV == false) {
+  port = 2083 // make sure this port is open on your server you can do that via WHM or talk to you hosting company
+  host = 'https://staging.vmcafe.id'
+  https = {
+    key: fs.readFileSync(
+      path.resolve(
+        __dirname,
+        './../../ssl/keys/bfb12_0f985_2e20053df15a9a16b5eeca2540d62907.key'
+      )
+    ),
+    cert: fs.readFileSync(
+      path.resolve(
+        __dirname,
+        './../../ssl/certs/www_staging_vmcafe_id_bfb12_0f985_1621805448_96e28761d33540337ac248f159717c45.crt'
+      )
+    ),
+  }
+}
 export default {
+  mode: 'universal',
+  env: {},
+  server: {
+    port: port,
+    host: host,
+    timing: false,
+    https: https,
+  },
   // Target: https://go.nuxtjs.dev/config-target
   target: 'static',
 

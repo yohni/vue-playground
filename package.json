@@ -31,6 +31,8 @@
     "eslint-plugin-vue": "^7.5.0",
     "prettier": "^2.2.1",
     "stylus": "^0.54.8",
-    "stylus-loader": "^3.0.2"
+    "stylus-loader": "^3.0.2",
+    "fs": "0.0.2",
+    "path": "^0.12.7"
   }
 }
