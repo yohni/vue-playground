@@ -16,8 +16,10 @@
     "@nuxtjs/toast": "^3.3.1",
     "bootstrap": "^4.6.0",
     "bootstrap-vue": "^2.21.2",
+    "cookie-universal-nuxt": "^2.1.4",
     "core-js": "^3.8.3",
     "nuxt": "^2.14.12",
+    "vue-avatar": "^2.3.3",
     "vue-slick-carousel": "^1.0.6",
     "vuelidate": "^0.7.6"
   },
@@ -30,10 +32,10 @@
     "eslint-plugin-nuxt": "^2.0.0",
     "eslint-plugin-prettier": "^3.3.1",
     "eslint-plugin-vue": "^7.5.0",
+    "fs": "0.0.2",
+    "path": "^0.12.7",
     "prettier": "^2.2.1",
     "stylus": "^0.54.8",
-    "stylus-loader": "^3.0.2",
-    "fs": "0.0.2",
-    "path": "^0.12.7"
+    "stylus-loader": "^3.0.2"
   }
 }

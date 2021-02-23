@@ -33,13 +33,16 @@
             >
           </b-nav-form>
 
-          <b-nav-item href="#">
-            <NavbarItem :withBorder="true" icon="cart">10.000</NavbarItem>
-          </b-nav-item>
+          <NavbarItem :withBorder="true" icon="cart">10.000</NavbarItem>
+          <client-only>
+            <nuxt-link v-if="!isLoggedIn" to="/login">
+              <NavbarItem class="my-auto" :withBorder="true" icon="person"
+                >Login</NavbarItem
+              >
+            </nuxt-link>
 
-          <b-nav-item href="#">
-            <NavbarItem :withBorder="true" icon="person">Login</NavbarItem>
-          </b-nav-item>
+            <UserCard v-else class="my-auto" />
+          </client-only>
         </b-navbar-nav>
       </b-collapse>
     </b-navbar>
@@ -47,15 +50,22 @@
 </template>
 
 <script>
+import UserCard from '@/components/UserCard'
 import NavbarItem from './NavbarItem'
 export default {
   components: {
     NavbarItem,
+    UserCard,
   },
   data() {
     return {
       openSearch: false,
     }
+  },
+  computed: {
+    isLoggedIn() {
+      return this.$cookies.get('__vmctHarimau')
+    },
   },
 }
 </script>

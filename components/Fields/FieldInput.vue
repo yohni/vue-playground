@@ -26,7 +26,7 @@ export default {
 <style lang="stylus" scoped>
 @import '../../styles/imports';
 .field
-  min-width 264px
+  min-width 100px
   font-size 13px
   color blackText
   padding 24px 19px 21px

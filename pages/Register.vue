@@ -145,9 +145,12 @@ export default {
         try {
           const resp = await this.$axios.$post('/api/auth/register', this.form)
           console.log(resp)
-          this.isLoading = false
           this.isSuccess = true
           this.$refs['modal-status'].show()
+          setTimeout(() => {
+            this.$router.push('/login')
+            this.isLoading = false
+          }, 3000)
         } catch (error) {
           this.isLoading = false
           this.isSuccess = false

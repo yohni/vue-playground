@@ -8,7 +8,7 @@
         class="radio__field"
         @change="setRadio(item.value)"
       />
-      <span class="radio__label">{{ item.label }}</span>
+      <span class="radio__label text-truncate">{{ item.label }}</span>
       <div
         class="radio__line"
         :class="item.value === selected && 'radio__line__selected'"
@@ -58,7 +58,7 @@ export default {
 <style lang="stylus" scoped>
 @import '../../styles/imports';
 .radio
-  min-width 264px
+  min-width 100px
   font-size 13px
   color blackText
   padding 20px

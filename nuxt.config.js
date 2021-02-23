@@ -38,6 +38,7 @@ export default {
     // https://go.nuxtjs.dev/axios
     '@nuxtjs/axios',
     '@nuxtjs/toast',
+    'cookie-universal-nuxt',
   ],
   bootstrapVue: {
     icons: false,

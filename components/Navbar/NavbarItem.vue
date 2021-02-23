@@ -4,6 +4,7 @@
     :class="withBorder && 'nav-item__bordered'"
   >
     <img
+      v-if="icon"
       :src="require(`~/assets/icons/ic_${icon}.svg`)"
       alt=""
       class="nav-item__img mr-2"

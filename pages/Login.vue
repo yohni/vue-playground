@@ -5,7 +5,7 @@
       <div class="login__container container">
         <div class="login__container__mail mail">
           <Heading class="mail__heading">Masuk dengan email</Heading>
-          <form @submit.stop.prevent="onSubmit()" class="mail__form">
+          <form @submit.prevent="onSubmit()" class="mail__form">
             <div class="container w-100">
               <div class="row">
                 <Field
@@ -110,11 +110,20 @@ export default {
         this.isLoading = true
         try {
           const resp = await this.$axios.$post('/api/auth/login', this.form)
-          console.log(resp)
-          this.isLoading = false
+
+          this.$cookies.set(
+            '__vmctHarimau',
+            JSON.stringify(resp.data),
+            resp.data.expires_in
+          )
           this.isSuccess = true
           this.$refs['modal-status'].show()
+          setTimeout(() => {
+            this.isLoading = false
+            this.$router.push('/')
+          }, 2000)
         } catch (error) {
+          console.log(error)
           this.isLoading = false
           this.isSuccess = false
           this.$refs['modal-status'].show()
