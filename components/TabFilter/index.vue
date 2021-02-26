@@ -5,7 +5,7 @@
         v-for="option in options"
         :key="option.id"
         class="mx-2"
-        :variant="selectedOption === option.value ? 'info' : 'light'"
+        :variant="selectedOption === option.value ? 'info' : 'transparent'"
         @click="$emit('click', option.value)"
         style="font-size: 14px; cursor: pointer"
       >

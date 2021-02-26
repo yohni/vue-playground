@@ -19,8 +19,9 @@
     "cookie-universal-nuxt": "^2.1.4",
     "core-js": "^3.8.3",
     "nuxt": "^2.14.12",
+    "swiper": "5.x",
     "vue-avatar": "^2.3.3",
-    "vue-slick-carousel": "^1.0.6",
+    "vue-awesome-swiper": "^4.1.1",
     "vuelidate": "^0.7.6"
   },
   "devDependencies": {
