@@ -46,7 +46,7 @@ export default {
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {
-    baseURL: 'http://api.vmcafe.id',
+    baseURL: 'https://api.vmcafe.id',
   },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
