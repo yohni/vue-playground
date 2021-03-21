@@ -1,13 +1,25 @@
 <template>
-  <div class="underconstruction">Hallo</div>
+  <b-container>
+    <div>Hallo</div>
+    <right-icon-btn>{{ name }}</right-icon-btn>
+  </b-container>
 </template>
 
 <script>
-export default {}
+import RightIconBtn from '~/components/Buttons/RightIconBtn.vue'
+export default {
+  components: {
+    RightIconBtn,
+  },
+  data() {
+    return {
+      name: 'HalloButton',
+    }
+  },
+}
 </script>
 
 <style lang="stylus" scoped>
-.underconstruction
-  background-image url('~assets/bg.jpeg')
-  min-height 100vh
+.underconstruct
+  text-align right !important
 </style>

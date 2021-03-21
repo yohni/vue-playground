@@ -22,7 +22,7 @@
       </b-col>
       <b-col md="7" sm="12" class="pt-5">
         <h1 class="detail__title text-center h1 font-weight-medium mb-4">
-          Fruity Nastar
+          Fruity Nastar - {{ $route.params.slug }}
         </h1>
         <Variant class="mb-5" :items="variants" :selected="selectedVariant" />
         <b-row>

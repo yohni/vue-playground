@@ -35,8 +35,8 @@
       <div class="product-list">
         <client-only>
           <swiper class="swiper" :options="swiperOption">
-            <swiper-slide v-for="item in [1, 2, 3, 4, 5, 6, 7]" :key="item">
-              <ProductCard name="Sumpia" price="120000" />
+            <swiper-slide v-for="item in dataSource" :key="item">
+              <ProductCard :name="item.name" :price="item.price" />
             </swiper-slide>
             <div class="swiper-pagination" slot="pagination"></div>
             <div class="swiper-button-prev" slot="button-prev"></div>
@@ -90,6 +90,8 @@ export default {
   layout: 'Main',
   data() {
     return {
+      dataSource: null,
+      activeCat: null,
       swiperOption: {
         slidesPerView: 4,
         slidesPerColumn: 2,
@@ -162,7 +164,18 @@ export default {
       selectedFilter: 0,
     }
   },
+  created() {
+    this.fetchData()
+  },
   methods: {
+    async fetchData() {
+      try {
+        const resp = await this.$axios.$get(`/api/product`)
+        this.dataSource = resp.data
+      } catch (error) {
+        console.log(error)
+      }
+    },
     onSlideStart(slide) {
       this.sliding = true
     },
